@@ -30,7 +30,7 @@
 | user(ユーザー)              | references        | null: false |
 
 ### Association
-- has_many :orders
+- has_one :order
 - belongs_to :user
 
 ## item_buysテーブル(購入物テーブル)
