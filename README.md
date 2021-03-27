@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :item_sales
-- has_one :order
+- has_many :order
 
 ## item_salesテーブル(出品物テーブル)
 | Column                         | Type               | Options     |
@@ -41,18 +41,18 @@
 | buy_derivery_num(配送先番地)             | string             | null: false |
 | buy_derivery_bld(配送先建物名)            | string             | null: true  |
 | buy_tell_num(購入者電話番号)              | string            | null: false |
-| order                                  | reference　    | null: false |
+| order                                  | references    | null: false |
 
 ### Association
-- has_one :orders
+- belongs_to :order
 
 ## ordersテーブル(購入情報テーブル)
 | Column                                | Type                  | Options     |
 | -------------------------             | -------               | ----------- |
-| user                                  | reference　    | null: false |
-| item_sale                             | reference | null: false |
+| user                                  | references　    | null: false |
+| item_sale                             | references| null: false |
 
 ### Association
-- has_one :item_buys
+- has_one :item_buy
 - belongs_to :item_sale
-- belongs_to :item_buy
+- belongs_to :user
