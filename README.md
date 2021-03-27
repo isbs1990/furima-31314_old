@@ -4,7 +4,7 @@
 | Column                               | Type    | Options     |
 | -------------------------            | ------- | ----------- |
 | nickname(ニックネーム)                 | string  | null: false |
-| user_email（メールアドレス）            | string  | null: false, unique: true |
+| email（メールアドレス）          　　　  | string  | null: false, unique: true |
 | encrypted_password（パスワード）       | string  | null: false |
 | knj_first_name（漢字姓）              | string  | null: false |
 | knj_last_name（漢字名）               | string  | null: false |
@@ -21,15 +21,16 @@
 | -------------------------      | -------            | ----------- |
 | name（出品名）                   | string             | null: false |
 | description(出品物詳細)          | text               | null: false |
-| detail_category_id(カテゴリー    | string             | null: false |
-| detail_status_id(状態)          | string             | null: false |
+| detail_category_id(カテゴリー    | integer             | null: false |
+| detail_status_id(状態)          | integer             | null: false |
 | delivery_cost_id(負担額)        | integer            | null: false |
 | pref_id(県)                    | integer            | null: false |
-| delivery_day_id(発送日)         | string             | null: false |
-| price(販売価格)              | integer            | null: false |
+| delivery_day_id(発送日)         | integer             | null: false |
+| price(販売価格)              | integer           　　　 | null: false |
+| user(ユーザー)              | reference: user         | null: false |
 
 ### Association
-- has_many :orders
+- has_many :order
 
 ## item_buysテーブル(購入物テーブル)
 | Column                                   | Type               | Options     |
@@ -45,12 +46,12 @@
 - has_one :orders
 
 ## ordersテーブル(購入情報テーブル)
-| Column                                    | Type               | Options     |
-| -------------------------                 | -------            | ----------- |
-| user_id                                   | integer             | null: false |
-| item_sale_id                              | integer             | null: false |
+| Column                                | Type                  | Options     |
+| -------------------------             | -------               | ----------- |
+| user                                  | reference: user 　    | null: false |
+| item_sale                             | reference: item_sale  | null: false |
 
 ### Association
 - has_one :item_buys
-- belongs_to :item_sales
-- belongs_to :item_buys
+- belongs_to :item_sale
+- belongs_to :item_buy
