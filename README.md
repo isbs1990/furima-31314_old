@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :item_sales
-- has_many :order
+- has_many :orders
 
 ## item_salesテーブル(出品物テーブル)
 | Column                         | Type               | Options     |
@@ -27,10 +27,11 @@
 | pref_id(県)                    | integer            | null: false |
 | delivery_day_id(発送日)         | integer             | null: false |
 | price(販売価格)              | integer           　　　 | null: false |
-| user(ユーザー)              | reference        | null: false |
+| user(ユーザー)              | references        | null: false |
 
 ### Association
-- has_many :order
+- has_many :orders
+- belongs_to :user
 
 ## item_buysテーブル(購入物テーブル)
 | Column                                   | Type               | Options     |
