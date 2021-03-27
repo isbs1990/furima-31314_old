@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :item_sales
-- has_many :orders
+- has_one :order
 
 ## item_salesテーブル(出品物テーブル)
 | Column                         | Type               | Options     |
@@ -27,7 +27,7 @@
 | pref_id(県)                    | integer            | null: false |
 | delivery_day_id(発送日)         | integer             | null: false |
 | price(販売価格)              | integer           　　　 | null: false |
-| user(ユーザー)              | reference: user         | null: false |
+| user(ユーザー)              | reference        | null: false |
 
 ### Association
 - has_many :order
@@ -41,6 +41,7 @@
 | buy_derivery_num(配送先番地)             | string             | null: false |
 | buy_derivery_bld(配送先建物名)            | string             | null: true  |
 | buy_tell_num(購入者電話番号)              | string            | null: false |
+| order                                  | reference　    | null: false |
 
 ### Association
 - has_one :orders
@@ -48,8 +49,8 @@
 ## ordersテーブル(購入情報テーブル)
 | Column                                | Type                  | Options     |
 | -------------------------             | -------               | ----------- |
-| user                                  | reference: user 　    | null: false |
-| item_sale                             | reference: item_sale  | null: false |
+| user                                  | reference　    | null: false |
+| item_sale                             | reference | null: false |
 
 ### Association
 - has_one :item_buys
